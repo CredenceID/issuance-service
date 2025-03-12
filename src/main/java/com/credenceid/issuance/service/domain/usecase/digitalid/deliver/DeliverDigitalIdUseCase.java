@@ -1,4 +1,4 @@
-package com.credenceid.issuance.service.domain.usecase;
+package com.credenceid.issuance.service.domain.usecase.digitalid.deliver;
 
 import com.credenceid.issuance.service.domain.model.DigitalIdResult;
 

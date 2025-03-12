@@ -1,4 +1,4 @@
-package com.credenceid.issuance.service.domain.usecase;
+package com.credenceid.issuance.service.domain.usecase.application;
 
 import com.credenceid.issuance.service.domain.model.Application;
 
