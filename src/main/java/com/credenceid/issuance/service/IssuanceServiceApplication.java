@@ -1,4 +1,4 @@
-package com.credenceid;
+package com.credenceid.issuance.service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
