@@ -2,19 +2,28 @@ package com.credenceid.issuance.service.domain.usecase.digitalid.generate.issuer
 
 import com.credenceid.identity.iso18013.mdoc.IssuerSignedItem;
 import com.credenceid.identity.iso18013.mdoc.NameSpace;
+import com.credenceid.issuance.service.data.repository.ApplicationPropertiesRepository;
 import com.credenceid.issuance.service.domain.model.PersonalData;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class BuildNameSpaceUseCaseImpl implements BuildNameSpaceUseCase {
-    private static final String ISO_18031_5_BASE_NAMESPACE = "org.iso.18013.5.1";
-    private static final int RANDOMS_LIST_SIZE = 9;
+    private static final int RANDOMS_LIST_SIZE = 256; // TODO Big on purpose, to be optimized
 
+    private final ApplicationPropertiesRepository applicationPropertiesRepository;
     private final BuildIssuerSignedItemsUseCase buildIssuerSignedItemsUseCase;
 
-    public BuildNameSpaceUseCaseImpl(BuildIssuerSignedItemsUseCase buildIssuerSignedItemsUseCase) {
+    @Autowired
+    public BuildNameSpaceUseCaseImpl(
+            ApplicationPropertiesRepository applicationPropertiesRepository,
+            BuildIssuerSignedItemsUseCase buildIssuerSignedItemsUseCase
+    ) {
+        this.applicationPropertiesRepository = applicationPropertiesRepository;
         this.buildIssuerSignedItemsUseCase = buildIssuerSignedItemsUseCase;
     }
 
@@ -24,7 +33,7 @@ public class BuildNameSpaceUseCaseImpl implements BuildNameSpaceUseCase {
         List<IssuerSignedItem> issuerSignedItems = buildIssuerSignedItemsUseCase.execute(personalData, createRandoms());
 
         // Creates NameSpace
-        return new NameSpace(ISO_18031_5_BASE_NAMESPACE, issuerSignedItems);
+        return new NameSpace(applicationPropertiesRepository.getNameSpace(), issuerSignedItems);
     }
 
     /**

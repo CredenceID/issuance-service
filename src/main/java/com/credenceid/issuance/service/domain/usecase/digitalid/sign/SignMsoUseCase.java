@@ -1,4 +1,4 @@
-package com.credenceid.issuance.service.domain.usecase.digitalid.generate.mso;
+package com.credenceid.issuance.service.domain.usecase.digitalid.sign;
 
 import com.credenceid.identity.iso18013.mdoc.mso.MobileSecureObject;
 

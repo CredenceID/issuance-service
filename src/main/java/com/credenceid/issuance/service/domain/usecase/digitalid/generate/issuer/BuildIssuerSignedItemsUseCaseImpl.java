@@ -3,9 +3,11 @@ package com.credenceid.issuance.service.domain.usecase.digitalid.generate.issuer
 import com.credenceid.identity.iso18013.DataIdentifier;
 import com.credenceid.identity.iso18013.mdoc.IssuerSignedItem;
 import com.credenceid.issuance.service.domain.model.PersonalData;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class BuildIssuerSignedItemsUseCaseImpl implements BuildIssuerSignedItemsUseCase {
     @Override
     public List<IssuerSignedItem> execute(PersonalData personalData, List<byte[]> randoms) {
