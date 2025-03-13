@@ -1,4 +1,4 @@
-package com.credenceid.issuance.service.domain.usecase.digitalid.generate;
+package com.credenceid.issuance.service.domain.usecase.digitalid.generate.issuer;
 
 import com.credenceid.identity.iso18013.mdoc.IssuerSignedItem;
 import com.credenceid.issuance.service.domain.model.PersonalData;

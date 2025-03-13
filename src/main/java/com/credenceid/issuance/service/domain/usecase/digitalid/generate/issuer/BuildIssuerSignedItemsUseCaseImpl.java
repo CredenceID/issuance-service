@@ -1,4 +1,4 @@
-package com.credenceid.issuance.service.domain.usecase.digitalid.generate;
+package com.credenceid.issuance.service.domain.usecase.digitalid.generate.issuer;
 
 import com.credenceid.identity.iso18013.DataIdentifier;
 import com.credenceid.identity.iso18013.mdoc.IssuerSignedItem;
@@ -12,55 +12,55 @@ public class BuildIssuerSignedItemsUseCaseImpl implements BuildIssuerSignedItems
         int index = 0;
         // Family name
         IssuerSignedItem familyNameIssuerSignedItem =
-                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.FamilyName.value, personalData.getFamilyName());
+                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.FamilyName.value, personalData.familyName());
 
         index++;
 
         // Given name
         IssuerSignedItem givenNameIssuerSignedItem =
-                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.GivenNames.value, personalData.getGivenNames());
+                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.GivenNames.value, personalData.givenNames());
 
         index++;
 
         // Issuing authority
         IssuerSignedItem issuingAuthorityIssuerSignedItem =
-                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.IssuingAuthority.value, personalData.getIssuer());
+                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.IssuingAuthority.value, personalData.issuer());
 
         index++;
 
         // Issuing country
         IssuerSignedItem issuingCountryIssuerSignedItem =
-                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.IssuingCountry.value, personalData.getIssuer());
+                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.IssuingCountry.value, personalData.issuer());
 
         index++;
 
         // Document number
         IssuerSignedItem documentNumberIssuerSignedItem =
-                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.DocumentNumber.value, personalData.getDocumentNumber());
+                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.DocumentNumber.value, personalData.documentNumber());
 
         index++;
 
         // Date of birth
         IssuerSignedItem dateOfBirthIssuerSignedItem =
-                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.BirthDate.value, personalData.getDateOfBirth());
+                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.BirthDate.value, personalData.dateOfBirth());
 
         index++;
 
         // Sex
         IssuerSignedItem sexIssuerSignedItem =
-                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.Sex.value, personalData.getSex().getValue());
+                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.Sex.value, personalData.sex().getValue());
 
         index++;
 
         // Date of expiry
         IssuerSignedItem dateOfExpiryIssuerSignedItem =
-                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.ExpiryDate.value, personalData.getDateOfExpiry());
+                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.ExpiryDate.value, personalData.dateOfExpiry());
 
         index++;
 
         // Portrait
         IssuerSignedItem portraitIssuerSignedItem =
-                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.Portrait.value, personalData.getPortrait());
+                new IssuerSignedItem(index, randoms.get(index), DataIdentifier.Portrait.value, personalData.portrait());
 
         return List.of(
                 familyNameIssuerSignedItem,

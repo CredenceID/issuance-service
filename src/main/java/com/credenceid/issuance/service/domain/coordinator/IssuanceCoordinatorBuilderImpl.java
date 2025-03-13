@@ -1,8 +1,8 @@
 package com.credenceid.issuance.service.domain.coordinator;
 
-import com.credenceid.issuance.service.domain.usecase.DeliverDigitalIdUseCase;
-import com.credenceid.issuance.service.domain.usecase.GenerateDigitalIdUseCase;
-import com.credenceid.issuance.service.domain.usecase.GetApplicationUseCase;
+import com.credenceid.issuance.service.domain.usecase.digitalid.deliver.DeliverDigitalIdUseCase;
+import com.credenceid.issuance.service.domain.usecase.digitalid.generate.GenerateDigitalIdUseCase;
+import com.credenceid.issuance.service.domain.usecase.application.GetApplicationUseCase;
 
 public class IssuanceCoordinatorBuilderImpl implements IssuanceCoordinatorBuilder {
     private GetApplicationUseCase getApplicationUseCase = null;

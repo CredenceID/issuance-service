@@ -2,9 +2,9 @@ package com.credenceid.issuance.service.domain.coordinator;
 
 import com.credenceid.issuance.service.domain.model.Application;
 import com.credenceid.issuance.service.domain.model.DigitalIdResult;
-import com.credenceid.issuance.service.domain.usecase.DeliverDigitalIdUseCase;
-import com.credenceid.issuance.service.domain.usecase.GenerateDigitalIdUseCase;
-import com.credenceid.issuance.service.domain.usecase.GetApplicationUseCase;
+import com.credenceid.issuance.service.domain.usecase.application.GetApplicationUseCase;
+import com.credenceid.issuance.service.domain.usecase.digitalid.deliver.DeliverDigitalIdUseCase;
+import com.credenceid.issuance.service.domain.usecase.digitalid.generate.GenerateDigitalIdUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
