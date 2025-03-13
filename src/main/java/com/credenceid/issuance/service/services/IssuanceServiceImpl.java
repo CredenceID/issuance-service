@@ -10,12 +10,21 @@ import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Implementation of IssuanceService interface
+ */
 @Service
 public class IssuanceServiceImpl implements IssuanceService {
 
+    /**
+     * process ApplicationRequest and generate DigitalId against application data
+     *
+     * @param applicationRequest
+     * @return DigitalIdResponse
+     */
     @Override
-    public DigitalIdResponse generateDigitalId(ApplicationRequest request) {
-        Application application = getApplicationData(request);
+    public DigitalIdResponse generateDigitalId(ApplicationRequest applicationRequest) {
+        Application application = getApplicationData(applicationRequest);
 
         /* created dummy response */
         //TODO implement generation of digitalId
@@ -28,22 +37,34 @@ public class IssuanceServiceImpl implements IssuanceService {
         return response;
     }
 
-    private PersonalData getPersonalData(ApplicationRequest request) {
+    /**
+     * fetch PersonalData from applicationRequest
+     *
+     * @param applicationRequest
+     * @return PersonalData
+     */
+    private PersonalData getPersonalData(ApplicationRequest applicationRequest) {
         return new PersonalData(
-                request.getPersonalData().getPortrait(),
-                request.getPersonalData().getDocumentCode(),
-                request.getPersonalData().getIssuer(),
-                request.getPersonalData().getDocumentNumber(),
-                request.getPersonalData().getDateOfBirth(),
-                request.getPersonalData().getSex(),
-                request.getPersonalData().getDateOfExpiry(),
-                request.getPersonalData().getFamilyName(),
-                request.getPersonalData().getGivenNames());
+                applicationRequest.getPersonalData().getPortrait(),
+                applicationRequest.getPersonalData().getDocumentCode(),
+                applicationRequest.getPersonalData().getIssuer(),
+                applicationRequest.getPersonalData().getDocumentNumber(),
+                applicationRequest.getPersonalData().getDateOfBirth(),
+                applicationRequest.getPersonalData().getSex(),
+                applicationRequest.getPersonalData().getDateOfExpiry(),
+                applicationRequest.getPersonalData().getFamilyName(),
+                applicationRequest.getPersonalData().getGivenNames());
     }
 
-    private Application getApplicationData(ApplicationRequest request) {
-        CoseKey deviceKey = new CoseKey(request.getDeviceKey());
-        return new Application(getPersonalData(request), deviceKey, request.getWalletToken());
+    /**
+     * fetch ApplicationData from ApplicationRequest
+     *
+     * @param applicationRequest
+     * @return Application
+     */
+    private Application getApplicationData(ApplicationRequest applicationRequest) {
+        CoseKey deviceKey = new CoseKey(applicationRequest.getDeviceKey());
+        return new Application(getPersonalData(applicationRequest), deviceKey, applicationRequest.getWalletToken());
     }
 
 }

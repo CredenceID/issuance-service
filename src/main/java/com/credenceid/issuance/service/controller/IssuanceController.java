@@ -20,15 +20,19 @@ public class IssuanceController {
     @Autowired
     IssuanceService service;
 
+    /**
+     * Endpoint to generate digital id from application data
+     *
+     * @param applicationRequest
+     * @return the generated digital Id
+     */
     @PostMapping(value = "/generateDigitalId")
     public DigitalIdResponse generateDigitalId(@RequestBody(required = true) ApplicationRequest applicationRequest) {
 
         logger.info("WalletToken : {}, DeviceKey : {}, Personal Data : {}",
                 applicationRequest.getWalletToken(), applicationRequest.getDeviceKey(), applicationRequest.getPersonalData());
 
-        DigitalIdResponse response = service.generateDigitalId(applicationRequest);
-
-        return response;
+        return service.generateDigitalId(applicationRequest);
     }
 
 }
