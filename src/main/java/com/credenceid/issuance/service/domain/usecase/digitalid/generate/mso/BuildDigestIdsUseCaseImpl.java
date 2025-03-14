@@ -9,7 +9,7 @@ import java.security.NoSuchAlgorithmException;
 @Component
 public class BuildDigestIdsUseCaseImpl implements BuildDigestIdsUseCase {
     @Override
-    public DigestIds execute(NameSpace nameSpace, String algorithm) {
+    public DigestIds execute(NameSpace nameSpace, String algorithm) throws IllegalArgumentException {
         try {
             return new DigestIds(nameSpace, algorithm);
         } catch (NoSuchAlgorithmException nsae) {
